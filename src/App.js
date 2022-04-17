@@ -1,13 +1,42 @@
-import Colored from "./components/Colored";
-import Component1 from "./components/Component1";
-
+import { useState } from "react";
 
 function App() {
+  const [firstName, setFirstName] = useState('')
+
+  const handleSubmition = (event)=> {
+    event.preventDefault();
+    console.log(firstName);
+  }
+  
+
   return (
     <div >
-      <Colored color={'green'} >
-        <Component1/>
-      </Colored>
+      <h1>Forms</h1>
+
+      <form onSubmit={handleSubmition}>
+        <div>
+          <label>First Name</label>
+          <input value={firstName} onChange={(e)=>setFirstName(e.target.value)} type='text' />
+        </div>
+        <div>
+          <label>Second Name</label>
+          <input type='text' />
+        </div>
+        <div>
+          <label>Gender</label>
+          <div>
+            <label>Male</label>
+            <input name="gender" type='radio'  />
+          </div>
+          <div>
+            <label>Female</label>
+            <input name="gender" type='radio'  />
+          </div>
+        </div>
+        <div>
+          <input type='submit' value='Submit'/>
+        </div>
+      </form>
     </div>
   );
 }
